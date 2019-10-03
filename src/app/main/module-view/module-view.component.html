@@ -1,7 +1,57 @@
-<mat-card style="width: 90%; margin: 10px auto">
-    <mat-grid-list cols="4" rows="1" rowHeight="100px">
-        <mat-grid-tile style="font-size: 30px; font-weight: bolder">{{ name }}</mat-grid-tile>
-        <mat-grid-tile style="font-size: 30px;">{{ temperature }}</mat-grid-tile>
-        <mat-grid-tile style="font-size: 30px;">{{ humidity }}</mat-grid-tile>
-    </mat-grid-list>
+<mat-card style="margin: 10px 0">
+  <mat-grid-list cols="5" rows="1" rowHeight="100px">
+
+    <!-- DISPLAY MODULE TITLE -->
+    <mat-grid-tile>
+      <app-info-display [title]='"Module Title"' [data]="name"></app-info-display>
+    </mat-grid-tile>
+
+    <!-- DISPLAY TEMPERATURE -->
+    <mat-grid-tile>
+      <app-info-display [title]='"Temperature"' [data]="temperature"></app-info-display>
+    </mat-grid-tile>
+
+    <!-- DISPLAY HUMIDITY -->
+    <mat-grid-tile>
+      <app-info-display [title]='"Humidity"' [data]="humidity"></app-info-display>
+    </mat-grid-tile>
+
+    <!-- DISPLAY STATUS -->
+    <mat-grid-tile>
+      <div [ngSwitch]="status">
+        <button *ngSwitchCase="1" mat-stroked-button disableRipple>
+          <mat-icon style="margin: 5px auto;">emoji_objects</mat-icon>
+          <div style="display: block; text-align: center;">DISCONNECTED</div>
+        </button>
+        <button *ngSwitchCase="2" mat-raised-button disableRipple color="warn">
+          <mat-icon style="margin: 5px auto;">emoji_objects</mat-icon>
+          <div style="display: block; text-align: center;">SMOKE</div>
+        </button>
+        <button *ngSwitchCase="3" mat-raised-button disableRipple color="warn">
+          <mat-icon style="margin: 5px auto;">emoji_objects</mat-icon>
+          <div style="display: block; text-align: center;">SMOKE</div>
+        </button>
+        <button *ngSwitchDefault mat-stroked-button disableRipple color="primary">
+          <mat-icon style="margin: 5px auto;">emoji_objects</mat-icon>
+          <div style="display: block; text-align: center;">SAFE</div>
+        </button>
+      </div>
+
+    </mat-grid-tile>
+    <!-- DISPLAY BUTTON -->
+    <mat-grid-tile>
+      <button *ngIf="isLight" mat-flat-button (click)="isLight = !isLight" color="primary">
+        <mat-icon style="margin: 5px auto;">emoji_objects</mat-icon>
+        <div style="display: block; text-align: center;">ON</div>
+      </button>
+      <button *ngIf="!isLight" mat-stroked-button (click)="isLight = !isLight" color="primary">
+        <mat-icon style="margin: 5px auto;">emoji_objects</mat-icon>
+        <div style="display: block; text-align: center;">OFF</div>
+      </button>
+      <button mat-flat-button color="primary" style="margin: 0 5px;">
+        <mat-icon style="margin: 5px auto;">create</mat-icon>
+        <div style="display: block; text-align: center;">EDIT</div>
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
 </mat-card>

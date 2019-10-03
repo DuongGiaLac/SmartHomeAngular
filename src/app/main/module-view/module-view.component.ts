@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Status} from '../../../models/enum';
 
 @Component({
   selector: 'app-module-view',
@@ -6,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./module-view.component.scss']
 })
 export class ModuleViewComponent implements OnInit {
+  @Input()
   name = 'Living Room';
-  temperature = '18';
-  humidity = '???';
+  @Input()
+  temperature = 18.0;
+  @Input()
+  humidity = 20.0;
+  @Input()
+  isLight = false;
+  @Input()
+  status: Status = Status.SMOKE;
+  @Output()
+  switchLight = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {

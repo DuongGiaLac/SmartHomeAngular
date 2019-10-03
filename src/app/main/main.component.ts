@@ -1,7 +1,5 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { AngularFireDatabase, snapshotChanges } from '@angular/fire/database';
-import { Observable } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-main',
@@ -10,17 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class MainComponent implements OnInit {
 
-  tabs = [];
+  tabs = ['HOME 1'];
   rooms = ['ROOM01', 'ROOM02', 'ROOM03', 'ROOM04', 'ROOM05', 'ROOM06'];
 
   selected = new FormControl(0);
 
-  constructor(database: AngularFireDatabase) {
-    database.list('users/ggID/homes').valueChanges().subscribe(change => {
-      change.forEach(item => {
-        this.tabs.push(item);
-      });
-    });
+  constructor() {
   }
 
   ngOnInit() {
