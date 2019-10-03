@@ -7,7 +7,7 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
+  // tabs = this.model.HomesTitles;
   tabs = ['HOME 1'];
   rooms = ['ROOM01', 'ROOM02', 'ROOM03', 'ROOM04', 'ROOM05', 'ROOM06'];
 

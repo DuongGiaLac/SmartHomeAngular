@@ -16,6 +16,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material';
 import {InfoDisplayComponent} from './main/module-view/info-display/info-display.component';
+import {InfoButtonComponent} from './main/module-view/info-button/info-button.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {InfoDisplayComponent} from './main/module-view/info-display/info-display
     LoginComponent,
     MainComponent,
     ModuleViewComponent,
-    InfoDisplayComponent
+    InfoDisplayComponent,
+    InfoButtonComponent
   ],
   imports: [
     BrowserModule,

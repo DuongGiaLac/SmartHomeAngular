@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Status} from '../../../models/enum';
+import {Status} from '../../../models/Enums';
 
 @Component({
   selector: 'app-module-view',
@@ -16,7 +16,7 @@ export class ModuleViewComponent implements OnInit {
   @Input()
   isLight = false;
   @Input()
-  status: Status = Status.SMOKE;
+  status: Status = Status.DISCONNECT;
   @Output()
   switchLight = new EventEmitter();
 
