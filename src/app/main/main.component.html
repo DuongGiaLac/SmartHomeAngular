@@ -1,5 +1,7 @@
-<mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
-    <mat-tab *ngFor="let tab of tabs" [label]="tab">
-        Contents for {{tab}} tab
+<mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)"
+    style="background-color: antiquewhite; height: 100%">
+    <mat-tab *ngFor="let tab of tabs" [label]="tab.name" style="width: 100%;">
+        <button mat-raised-button color="primary">Connect new module</button>
+        <app-module-view *ngFor="let room of rooms"></app-module-view>
     </mat-tab>
 </mat-tab-group>

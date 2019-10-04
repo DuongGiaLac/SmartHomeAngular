@@ -17,6 +17,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { MatInputModule } from '@angular/material/input';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { ModuleViewComponent } from './main/module-view/module-view.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +30,8 @@ import { MatInputModule } from '@angular/material/input';
     DetailInfoComponent,
     DialogMonitorButtonComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    ModuleViewComponent
   ],
   entryComponents: [
     DetailInfoComponent],
@@ -40,6 +47,12 @@ import { MatInputModule } from '@angular/material/input';
     MatDividerModule,
     MatTabsModule,
     MatInputModule,
+    MatTabsModule,
+    MatCardModule,
+    MatGridListModule,
+    MatButtonModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
