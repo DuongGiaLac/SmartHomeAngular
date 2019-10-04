@@ -1,8 +1,8 @@
 class User {
-  public _UUID: string;
-  public _NAME: string;
-  public _EMAIL: string;
-  public _HOMES: Array<Home>;
+  public UUID: string;
+  public name: string;
+  public email: string;
+  public homes: Array<Home>;
 
   // constructor(UUID: string, name: string, email: string, homes: Array<Home>) {
   //   this._UUID = UUID;

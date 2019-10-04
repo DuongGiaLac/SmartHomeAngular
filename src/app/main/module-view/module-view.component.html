@@ -8,12 +8,12 @@
 
     <!-- DISPLAY TEMPERATURE -->
     <mat-grid-tile>
-      <app-info-display [title]='"Temperature"' [data]="temperature"></app-info-display>
+      <app-info-display [title]='"Temperature"' [data]="temperature + '\u00B0C'"></app-info-display>
     </mat-grid-tile>
 
     <!-- DISPLAY HUMIDITY -->
     <mat-grid-tile>
-      <app-info-display [title]='"Humidity"' [data]="humidity"></app-info-display>
+      <app-info-display [title]='"Humidity"' [data]="humidity + '\u00B0C'"></app-info-display>
     </mat-grid-tile>
 
     <!-- DISPLAY STATUS -->
@@ -40,10 +40,10 @@
     </mat-grid-tile>
     <!-- DISPLAY BUTTON -->
     <mat-grid-tile>
-      <button *ngIf="isLight" mat-flat-button (click)="switchLight.emit()" color="primary">
+      <button *ngIf="isLight" mat-flat-button (click)="isLight = !isLight" color="primary">
         <app-info-button [type]='"ON"'></app-info-button>
       </button>
-      <button *ngIf="!isLight" mat-stroked-button (click)="switchLight.emit()" color="primary">
+      <button *ngIf="!isLight" mat-stroked-button (click)="isLight = !isLight" color="primary">
         <app-info-button [type]='"OFF"'></app-info-button>
       </button>
       <button mat-flat-button color="primary" style="margin: 0 5px;">

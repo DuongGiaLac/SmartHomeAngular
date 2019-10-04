@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Status} from '../../../models/Enums';
+import {AngularFireDatabase} from '@angular/fire/database';
 
 @Component({
   selector: 'app-module-view',
@@ -16,11 +17,16 @@ export class ModuleViewComponent implements OnInit {
   @Input()
   isLight = false;
   @Input()
-  status: Status = Status.DISCONNECT;
+  status: Status = Status.SAFE;
   @Output()
   switchLight = new EventEmitter();
 
-  constructor() { }
+  constructor(public firebase: AngularFireDatabase) {
+    // this.firebase.list('users/ggID').snapshotChanges().subscribe(snapshots => {
+    //   const homes = Object.values(snapshots[1].payload.val());
+    //   console.log(homes);
+    // });
+  }
 
   ngOnInit() {
   }

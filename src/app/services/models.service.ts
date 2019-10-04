@@ -7,13 +7,19 @@ import {AngularFireDatabase} from '@angular/fire/database';
 export class ModelsService {
 
   HomesTitles(): Array<string> {
-    return this._USER._HOMES.map(home => home._NAME);
+    return this.user.homes.map(home => home._NAME);
   }
 
-  constructor(public firebase: AngularFireDatabase, public _USER = new User()) {
-    this._USER._UUID = 'ggID';
-    firebase.list(this._USER._UUID).valueChanges().subscribe(snapshot => {
-      console.log(snapshot.values());
-    });
+  constructor(public firebase: AngularFireDatabase, public user: User = null) {
+    // this.firebase.list('users/ggID').snapshotChanges().subscribe(snapshots => {
+    //   this.user = new User();
+    //   this.user.email = snapshots[0].payload.val().toString();
+    //   let homes = Object.values(snapshots[1].payload.val());
+    //   this.user.homes = homes.map(house => {
+    //     let newHouse = new Home();
+    //     newHouse.parseHome(house);
+    //     return newHouse;
+    //   });
+    // });
   }
 }
