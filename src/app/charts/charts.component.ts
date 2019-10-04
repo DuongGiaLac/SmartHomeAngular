@@ -56,7 +56,7 @@ export class ChartsComponent implements OnInit {
         display: true,
         text: 'Humidity',
         fontSize: 20,
-        fontColor: 'Blue',
+        fontColor: 'rgba(0, 4, 245, 0.7)',
       },
       legend: {
         display: false

@@ -13,16 +13,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTabsModule } from '@angular/material/tabs';
+import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
     ChartsComponent,
     DetailInfoComponent,
     DialogMonitorButtonComponent,
+    LoginComponent,
+    MainComponent
   ],
   entryComponents: [
-    DetailInfoComponent
-  ],
+    DetailInfoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,6 +38,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatCardModule,
     MatDividerModule,
+    MatTabsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
