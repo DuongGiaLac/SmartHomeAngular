@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Status} from '../../../models/Enums';
 import {AngularFireDatabase} from '@angular/fire/database';
-
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DetailInfoComponent } from '../../detail-info/detail-info.component';
 @Component({
   selector: 'app-module-view',
   templateUrl: './module-view.component.html',
