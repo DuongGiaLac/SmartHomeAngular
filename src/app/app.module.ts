@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { InfoDisplayComponent } from './main/module-view/info-display/info-display.component';
+import { InfoButtonComponent } from './main/module-view/info-button/info-button.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +33,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
     DialogMonitorButtonComponent,
     LoginComponent,
     MainComponent,
-    ModuleViewComponent
+    ModuleViewComponent,
+    InfoDisplayComponent,
+    InfoButtonComponent
   ],
   entryComponents: [
     DetailInfoComponent],
@@ -52,7 +56,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatGridListModule,
     MatButtonModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
