@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {ModelsService} from '../services/models.service';
 
 @Component({
   selector: 'app-main',
@@ -9,7 +10,7 @@ import {FormControl} from '@angular/forms';
 export class MainComponent implements OnInit {
   // tabs = this.model.HomesTitles;
   tabs = ['HOME 1'];
-  rooms = ['ROOM01', 'ROOM02', 'ROOM03', 'ROOM04', 'ROOM05', 'ROOM06'];
+  rooms = ['ROOM01'];
 
   selected = new FormControl(0);
 

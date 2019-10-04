@@ -46,7 +46,7 @@
       <button *ngIf="!isLight" mat-stroked-button (click)="isLight = !isLight" color="primary">
         <app-info-button [type]='"OFF"'></app-info-button>
       </button>
-      <button mat-flat-button color="primary" style="margin: 0 5px;">
+      <button mat-flat-button color="primary" style="margin: 0 5px;" (click)='openDialog()'>
         <app-info-button [type]='"EDIT"'></app-info-button>
       </button>
     </mat-grid-tile>

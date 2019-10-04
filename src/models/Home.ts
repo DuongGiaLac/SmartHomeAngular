@@ -1,9 +1,29 @@
-class Home {
-  public _NAME: string;
-  private _MODULES: Array<Module>;
+import {Module} from './Module';
+
+export class Home {
+
+  get name(): string {
+    return this._NAME;
+  }
+
+  constructor(private _NAME = '', private _MODULES: Array<Module> = []) {
+  }
 
   parseHome(input: any) {
     this._NAME = input.name;
-    this._MODULES = Object.keys(input.modules).map(MAC => new Module(MAC, input.modules.MAC));
+    if (input.modules) {
+      let addresses = Object.keys(input.modules);
+      this._MODULES = addresses.map(addr => {
+        return new Module(addr, input.modules[addr]);
+      });
+    }
+  }
+
+  toString(): string {
+    let result = '';
+    for (let module of this._MODULES) {
+      result += `${module}; `;
+    }
+    return result;
   }
 }
