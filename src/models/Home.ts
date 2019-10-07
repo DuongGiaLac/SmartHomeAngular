@@ -5,6 +5,9 @@ export class Home {
   get name(): string {
     return this._NAME;
   }
+  get modules(): Array<Module> {
+    return this._MODULES;
+  }
 
   constructor(private _NAME = '', private _MODULES: Array<Module> = []) {
   }

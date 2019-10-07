@@ -3,7 +3,7 @@
 
     <!-- DISPLAY MODULE TITLE -->
     <mat-grid-tile>
-      <app-info-display [title]='"Module Title"' [data]="name"></app-info-display>
+      <app-info-display [title]='"Module Title"' [data]="room.name"></app-info-display>
     </mat-grid-tile>
 
     <!-- DISPLAY TEMPERATURE -->
@@ -40,10 +40,10 @@
     </mat-grid-tile>
     <!-- DISPLAY BUTTON -->
     <mat-grid-tile>
-      <button *ngIf="isLight" mat-flat-button (click)="isLight = !isLight" color="primary">
+      <button *ngIf="isLight" mat-flat-button (click)="switchLight()" color="primary">
         <app-info-button [type]='"ON"'></app-info-button>
       </button>
-      <button *ngIf="!isLight" mat-stroked-button (click)="isLight = !isLight" color="primary">
+      <button *ngIf="!isLight" mat-stroked-button (click)="switchLight()" color="primary">
         <app-info-button [type]='"OFF"'></app-info-button>
       </button>
       <button mat-flat-button color="primary" style="margin: 0 5px;" (click)='openDialog()'>
