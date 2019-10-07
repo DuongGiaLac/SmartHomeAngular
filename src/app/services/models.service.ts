@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {AngularFireDatabase} from '@angular/fire/database';
-import {User} from '../../models/User';
-import {Home} from '../../models/Home';
+import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { User } from '../../models/User';
+import { Home } from '../../models/Home';
 
 @Injectable({
   providedIn: 'root'
