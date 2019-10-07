@@ -1,11 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Status} from '../../../models/Enums';
 import {AngularFireDatabase} from '@angular/fire/database';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {DetailInfoComponent} from '../../detail-info/detail-info.component';
-import {ModelsService} from '../../services/models.service';
-import {User} from '../../../models/User';
-import {Home} from '../../../models/Home';
+import {Module} from '../../../models/Module';
 
 @Component({
   selector: 'app-module-view',
@@ -14,40 +12,58 @@ import {Home} from '../../../models/Home';
 })
 export class ModuleViewComponent implements OnInit {
   @Input()
-  name = 'Living Room';
-  @Input()
-  temperature = 18.0;
-  @Input()
-  humidity = 20.0;
-  @Input()
+  public room: Module;
+  private _TEMP_HUMID = '';
+  set temp_humid(value: string) {
+    if (value === '') {
+      this.temperature = 0;
+      this.humidity = 0;
+    } else {
+      const data = value.split(' ');
+      this.temperature = parseFloat(data[0]);
+      this.humidity = parseFloat(data[1]);
+    }
+  }
+  temperature = 0;
+  humidity = 0;
   isLight = false;
-  @Input()
-  status: Status = Status.SAFE;
-  @Output()
-  switchLight = new EventEmitter();
+  status = Status.SAFE;
+
+  private _STATUS = {
+    'x': Status.DISCONNECT,
+    'o': Status.SAFE,
+    'i': Status.SMOKE,
+    'e': Status.FIRE
+  };
 
   constructor(public dialog: MatDialog, public firebase: AngularFireDatabase) {
-    // this.firebase.list('users/ggID').snapshotChanges().subscribe(snapshots => {
-    //   // tslint:disable-next-line: prefer-const
-    //   let email = snapshots[0].payload.val().toString();
-    //   let homes = Object.values(snapshots[1].payload.val()).map(house => {
-    //     // tslint:disable-next-line: prefer-const
-    //     let newHouse = new Home();
-    //     newHouse.parseHome(house);
-    //     return newHouse;
-    //   });
-    //   let name = snapshots[2].payload.val().toString();
-    //   let user = new User('ggID', name, email, homes);
-    // });
   }
 
   ngOnInit() {
+    this.firebase.list(`modules/${this.room.MAC}`).snapshotChanges().subscribe(snapshots => {
+      if (this.status !== this._STATUS[snapshots[3].payload.val().toString()]) {
+        this.status = this._STATUS[snapshots[3].payload.val().toString()];
+      }
+      if (this._TEMP_HUMID !== snapshots[4].payload.val().toString()) {
+        const data = snapshots[4].payload.val().toString().split(' ');
+        this.temperature = parseFloat(data[0]);
+        this.humidity = parseFloat(data[1]);
+      }
+      if (this.status !== snapshots[2].payload.val()) {
+        this.isLight = snapshots[2].payload.val().toString() === `true` ? true : false;
+      }
+    });
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DetailInfoComponent, {});
     dialogRef.afterClosed().subscribe(result => {
     });
+  }
+
+  switchLight() {
+    this.isLight = !this.isLight;
+    this.firebase.list(`modules`).update(`${this.room.MAC}`, {led: this.isLight});
   }
 
 }
