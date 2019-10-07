@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ModelsService } from './models.service';
+import { FirebaseDataService } from './firebase-data.service';
 
-describe('ModelsService', () => {
+describe('FirebaseDataService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ModelsService = TestBed.get(ModelsService);
+    const service: FirebaseDataService = TestBed.get(FirebaseDataService);
     expect(service).toBeTruthy();
   });
 });

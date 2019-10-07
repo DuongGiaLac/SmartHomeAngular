@@ -6,20 +6,14 @@ import {Home} from '../../models/Home';
 @Injectable({
   providedIn: 'root'
 })
-export class ModelsService {
-  //
-  // HomesTitles(): Array<string> {
-  //   // return this.user.map(home => home._NAME);
-  // }
+export class FirebaseDataService {
+  private user: User;
 
   get home(): Array<string> {
-    if (this.user) {
-      return this.user.homes.map(house => house.name);
-    }
-    return [];
+    return this.user.homes.map(house => house.name) || [];
   }
 
-  constructor(private firebase: AngularFireDatabase, private user: User) {
+  constructor(private firebase: AngularFireDatabase) {
     this.firebase.list('users/ggID').snapshotChanges().subscribe(snapshots => {
       // tslint:disable-next-line: prefer-const
       let email = snapshots[0].payload.val().toString();
@@ -33,7 +27,7 @@ export class ModelsService {
       // tslint:disable-next-line: prefer-const
       let name = snapshots[2].payload.val().toString();
       this.user = new User('ggID', name, email, homes);
-      console.log(this.user.toString());
+      console.log(homes);
     });
   }
 }
