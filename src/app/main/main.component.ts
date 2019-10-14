@@ -7,8 +7,17 @@ import {Module} from '../../models/Module';
 
 @Component({
   selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  template: `
+      <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)"
+                     style="background-color: #e5e5e5 ; height: 100%">
+          <mat-tab *ngFor="let tab of tabs" [label]="tab.name">
+              <div id="wrapper" style="max-width: 1000px; margin: 10px auto; padding: 0 20px">
+                  <button mat-raised-button color="primary">Connect new module</button>
+                  <app-module-view *ngFor="let room of rooms" [room]="room"></app-module-view>
+              </div>
+          </mat-tab>
+      </mat-tab-group>
+  `,
 })
 export class MainComponent implements OnInit {
   // tabs = this.model.HomesTitles;

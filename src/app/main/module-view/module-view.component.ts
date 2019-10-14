@@ -8,7 +8,6 @@ import {Module} from '../../../models/Module';
 @Component({
   selector: 'app-module-view',
   templateUrl: './module-view.component.html',
-  styleUrls: ['./module-view.component.scss']
 })
 export class ModuleViewComponent implements OnInit {
   @Input()
