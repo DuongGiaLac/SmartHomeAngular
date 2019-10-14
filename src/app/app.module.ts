@@ -25,6 +25,7 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from 'src/environments/environment';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {ConnectDialogComponent} from './connect-dialog/connect-dialog.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import {ConnectDialogComponent} from './connect-dialog/connect-dialog.component'
     ConnectDialogComponent
   ],
   entryComponents: [
-    DetailInfoComponent],
+    DetailInfoComponent, ConnectDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -59,9 +60,11 @@ import {ConnectDialogComponent} from './connect-dialog/connect-dialog.component'
     MatButtonModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
