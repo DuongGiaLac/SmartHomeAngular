@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { User } from '../../models/User';
 import { Home } from '../../models/Home';
+import { User } from '../../models/User';
+import { AuthenticatorService } from './authenticator.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FirebaseDataService {
+export class RealtimeDBService {
+  private auth = new AuthenticatorService();
   private user: User;
-
-  get home(): Array<string> {
-    return this.user.homes.map(house => house.name) || [];
+  get homes(): Array<Home> {
+    if (this.user == null) {
+      return [];
+    }
+    return this.user.homes;
   }
 
   constructor(private firebase: AngularFireDatabase) {
-    this.firebase.list('users/ggID').snapshotChanges().subscribe(snapshots => {
-      // tslint:disable-next-line: prefer-const
-      let email = snapshots[0].payload.val().toString();
+    this.firebase.list(`users/${this.auth.uuid}`).snapshotChanges().subscribe(snapshots => {
       // tslint:disable-next-line: prefer-const
       let homes = Object.values(snapshots[1].payload.val()).map(house => {
         // tslint:disable-next-line: prefer-const
@@ -24,10 +26,8 @@ export class FirebaseDataService {
         newHouse.parseHome(house);
         return newHouse;
       });
-      // tslint:disable-next-line: prefer-const
-      let name = snapshots[2].payload.val().toString();
-      this.user = new User('ggID', name, email, homes);
-      console.log(homes);
+      this.user = new User('ggID', snapshots[2].payload.val().toString(), snapshots[0].payload.val().toString(), homes);
     });
   }
+
 }

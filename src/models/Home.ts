@@ -5,6 +5,7 @@ export class Home {
   get name(): string {
     return this._NAME;
   }
+
   get modules(): Array<Module> {
     return this._MODULES;
   }
@@ -15,8 +16,7 @@ export class Home {
   parseHome(input: any) {
     this._NAME = input.name;
     if (input.modules) {
-      let addresses = Object.keys(input.modules);
-      this._MODULES = addresses.map(addr => {
+      this._MODULES = Object.keys(input.modules).map(addr => {
         return new Module(addr, input.modules[addr]);
       });
     }
@@ -24,7 +24,7 @@ export class Home {
 
   toString(): string {
     let result = '';
-    for (let module of this._MODULES) {
+    for (const module of this._MODULES) {
       result += `${module}; `;
     }
     return result;

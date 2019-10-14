@@ -2,8 +2,12 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-info-display',
-  templateUrl: './info-display.component.html',
-  styleUrls: ['./info-display.component.scss']
+  template: `
+      <div style="width: 100%">
+          <div style="text-align: center; font-weight: lighter; font-size: 15px;">{{ title }}</div>
+          <div style="text-align: center; font-weight: normal; font-size: 30px;">{{ data }}</div>
+      </div>
+  `,
 })
 export class InfoDisplayComponent implements OnInit {
   @Input()
