@@ -2,8 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-info-button',
-  templateUrl: './info-button.component.html',
-  styleUrls: ['./info-button.component.scss']
+  template: `
+      <mat-icon style="margin: 5px auto;">{{ icon }}</mat-icon>
+      <div style="display: block; text-align: center;">{{ _type }}</div>
+  `,
 })
 export class InfoButtonComponent implements OnInit {
   // tslint:disable-next-line:variable-name

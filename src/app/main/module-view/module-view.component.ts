@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Status} from '../../../models/Enums';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {MatDialog} from '@angular/material/dialog';
@@ -8,7 +8,6 @@ import {Module} from '../../../models/Module';
 @Component({
   selector: 'app-module-view',
   templateUrl: './module-view.component.html',
-  styleUrls: ['./module-view.component.scss']
 })
 export class ModuleViewComponent implements OnInit {
   @Input()
@@ -50,7 +49,7 @@ export class ModuleViewComponent implements OnInit {
         this.humidity = parseFloat(data[1]);
       }
       if (this.status !== snapshots[2].payload.val()) {
-        this.isLight = snapshots[2].payload.val().toString() === `true` ? true : false;
+        this.isLight = snapshots[2].payload.val().toString() === `true`;
       }
     });
   }
