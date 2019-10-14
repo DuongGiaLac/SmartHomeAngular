@@ -30,9 +30,10 @@ export class ModuleViewComponent implements OnInit {
 
   private _STATUS = {
     'x': Status.DISCONNECT,
-    'o': Status.SAFE,
-    'i': Status.SMOKE,
-    'e': Status.FIRE
+    '0': Status.SAFE,
+    '1': Status.SAFE,
+    '2': Status.SMOKE,
+    '3': Status.FIRE
   };
 
   constructor(public dialog: MatDialog, public firebase: AngularFireDatabase) {
