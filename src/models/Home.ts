@@ -1,4 +1,5 @@
 import {Module} from './Module';
+import {AngularFireDatabase} from '@angular/fire/database';
 
 export class Home {
 
@@ -13,11 +14,11 @@ export class Home {
   constructor(private _NAME = '', private _MODULES: Array<Module> = []) {
   }
 
-  parseHome(input: any) {
+  parseHome(input: any, firebase: AngularFireDatabase) {
     this._NAME = input.name;
     if (input.modules) {
       this._MODULES = Object.keys(input.modules).map(addr => {
-        return new Module(addr, input.modules[addr]);
+        return new Module(addr, input.modules[addr], firebase);
       });
     }
   }

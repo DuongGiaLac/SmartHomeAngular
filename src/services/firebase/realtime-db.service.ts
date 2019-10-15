@@ -23,7 +23,7 @@ export class RealtimeDBService {
       let homes = Object.values(snapshots[1].payload.val()).map(house => {
         // tslint:disable-next-line: prefer-const
         let newHouse = new Home();
-        newHouse.parseHome(house);
+        newHouse.parseHome(house, this.firebase);
         return newHouse;
       });
       this.user = new User('ggID', snapshots[2].payload.val().toString(), snapshots[0].payload.val().toString(), homes);

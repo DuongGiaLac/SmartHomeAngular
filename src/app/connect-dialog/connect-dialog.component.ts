@@ -4,7 +4,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 @Component({
   selector: 'app-connect-dialog',
   template: `
-
       <h1>{{ this.text }}</h1>
 
       <mat-form-field class="example-full-width">
