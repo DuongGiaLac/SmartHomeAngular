@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogMonitorButtonComponent implements OnInit {
 
+  isLight: boolean = true;
   constructor() { }
+
+  switchLight() {
+    this.isLight = !this.isLight;
+  }
 
   ngOnInit() {
   }

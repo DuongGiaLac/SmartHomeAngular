@@ -9,9 +9,9 @@
 
 <div>
     <mat-form-field class="example-full-width" style="width: 300px;">
-        <input matInput placeholder="" value="Villa" id="dialogName">
+        <input matInput placeholder="" [(ngModel)]="moduleName" id="dialogName">
     </mat-form-field>
-    <button mat-button id="controler">Save change</button>
+    <button mat-button id="controler" (click)="saveNameChange()">Save change</button>
     <button mat-mini-fab [mat-dialog-close]="true" id="closeDial">
         <mat-icon>clear</mat-icon>
     </button>
@@ -25,7 +25,7 @@
     <div>
         <svg height="200" width="200">
             <circle cx="100" cy="110" r="65" stroke="red" stroke-width="3" fill="transparent" />
-            <text x="50%" y="50%" stroke="#51c5cf" stroke-width="2px" font-size="55" dx="-20%" dy="14%">22</text>
+            <text x="50%" y="50%" stroke="#51c5cf" stroke-width="2px" font-size="55" dx="-20%" dy="14%">30</text>
             <circle cx="132" cy="118" r="4" stroke="#51c5cf" stroke-width="3" fill="transparent" />
             <text x="90%" y="50%" stroke="#51c5cf" stroke-width="2px" font-size="20" dx="-20%" dy="14%">
                 C
