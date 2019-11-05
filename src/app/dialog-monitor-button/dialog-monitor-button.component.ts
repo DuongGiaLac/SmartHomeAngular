@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-dialog-monitor-button',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogMonitorButtonComponent implements OnInit {
 
+  // @Output()
+  // switchLight = new EventEmitter();
+  @Input()
+  isLight = false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  triggerSwitch() {
   }
 
 }

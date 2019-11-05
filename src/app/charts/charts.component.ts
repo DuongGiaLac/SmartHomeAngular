@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { RealtimeDBService } from '../../services/firebase/realtime-db.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Module } from 'src/models/Module';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 @Component({
@@ -8,12 +12,17 @@ import { Label } from 'ng2-charts';
 })
 export class ChartsComponent implements OnInit {
 
-  constructor() { }
+  room: Module;
+  constructor(public dialogRef_chart: MatDialogRef<ChartsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, private firebase: AngularFireDatabase, public firebase_service: RealtimeDBService) {
+    this.room = new Module(data.room.MAC, data.room.name, firebase);
+    console.log(this.room);
+  }
 
   public temp_chart = {
     id: 'temperature',
     lineChartData: [
-      { data: [27, 28, 26, 30, 31, 30, 29], label: 'Temperature' },
+      { data: [].push(this.room.temperature), label: 'Temperature' },
     ],
     lineChartLabels: ['11:30', '11:45', '12:00', '12:15', '12:30', '12:45', '13:00'],
     lineChartOptions: {
@@ -42,7 +51,7 @@ export class ChartsComponent implements OnInit {
   public humi_chart = {
     id: 'humidity',
     lineChartData: [
-      { data: [99, 88, 100, 89, 102, 85, 80], label: 'Humidity' },
+      { data: [].push(this.room.humidity), label: 'Humidity' },
     ],
     lineChartLabels: ['11:30', '11:45', '12:00', '12:15', '12:30', '12:45', '13:00'],
     lineChartOptions: {

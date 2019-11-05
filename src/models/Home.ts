@@ -1,5 +1,5 @@
-import {Module} from './Module';
-import {AngularFireDatabase} from '@angular/fire/database';
+import { Module } from './Module';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 export class Home {
 
@@ -11,7 +11,7 @@ export class Home {
     return this._MODULES;
   }
 
-  constructor(private _NAME = '', private _MODULES: Array<Module> = []) {
+  constructor(public firebase: AngularFireDatabase, private _NAME = '', private _MODULES: Array<Module> = []) {
   }
 
   parseHome(input: any, firebase: AngularFireDatabase) {
