@@ -19,7 +19,7 @@ export class ChartsComponent implements OnInit {
   public temp_chart = {
     id: 'temperature',
     lineChartData: [
-      { data: [].push(this.room.temperature), label: 'Temperature' },
+      { data: [], label: 'Temperature' },
     ],
     lineChartLabels: ['11:30', '11:45', '12:00', '12:15', '12:30', '12:45', '13:00'],
     lineChartOptions: {
@@ -48,7 +48,7 @@ export class ChartsComponent implements OnInit {
   public humi_chart = {
     id: 'humidity',
     lineChartData: [
-      { data: [].push(this.room.humidity), label: 'Humidity' },
+      { data: [], label: 'Humidity' },
     ],
     lineChartLabels: ['11:30', '11:45', '12:00', '12:15', '12:30', '12:45', '13:00'],
     lineChartOptions: {
@@ -82,6 +82,7 @@ export class ChartsComponent implements OnInit {
   public charts = [this.temp_chart, this.humi_chart];
 
   ngOnInit() {
+
   }
 
 }

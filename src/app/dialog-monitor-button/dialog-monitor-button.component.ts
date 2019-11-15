@@ -8,11 +8,12 @@ import { EventEmitter } from 'events';
 })
 export class DialogMonitorButtonComponent implements OnInit {
 
-  // @Output()
-  // switchLight = new EventEmitter();
-  @Input()
-  isLight = false;
+  isLight: boolean = true;
   constructor() { }
+
+  switchLight() {
+    this.isLight = !this.isLight;
+  }
 
   ngOnInit() {
   }

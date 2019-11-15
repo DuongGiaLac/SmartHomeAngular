@@ -9,6 +9,8 @@ import { Module } from 'src/models/Module';
   styleUrls: ['./detail-info.component.scss']
 })
 export class DetailInfoComponent implements OnInit {
+  ngOnInit() {
+  }
 
   room: Module;
   temp: String;
@@ -23,9 +25,6 @@ export class DetailInfoComponent implements OnInit {
     this.humid = Math.round(this.room.humidity).toString();
   }
 
-  ngOnInit() {
-  }
-
   saveNameChange() {
     this.firebase.list(`/modules`).update(`${this.room.MAC}`, { name: this.room.name });
     console.log(this.room);
@@ -34,7 +33,6 @@ export class DetailInfoComponent implements OnInit {
   switchLight() {
     this.room.switchLight();
   }
-
 
   //Chart component
   // [].push(this.room.temperature)
