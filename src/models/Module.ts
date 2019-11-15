@@ -1,5 +1,5 @@
-import {AngularFireDatabase} from '@angular/fire/database';
-import {Status} from './Enums';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { Status } from './Enums';
 
 export class Module {
   private _TEMP_HUMID: string;
@@ -18,8 +18,12 @@ export class Module {
   isLight = false;
 
   status = Status.SAFE;
+
   get name(): string {
     return this._NAME;
+  }
+  set name(value: string) {
+    this._NAME = value;
   }
   get MAC(): string {
     return this._MAC;
@@ -49,7 +53,7 @@ export class Module {
 
   public switchLight() {
     this.isLight = !this.isLight;
-    this.firebase.list(`modules`).update(`${this._MAC}`, {led: this.isLight});
+    this.firebase.list(`modules`).update(`${this._MAC}`, { led: this.isLight });
   }
 
 }

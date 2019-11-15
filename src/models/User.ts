@@ -1,9 +1,9 @@
-import {Home} from './Home';
+import { Home } from './Home';
 
 export class User {
-  private UUID: string;
-  private name: string;
-  private email: string;
+  public UUID: string;
+  public name: string;
+  public email: string;
   private _HOMES: Array<Home>;
 
   get homes() {

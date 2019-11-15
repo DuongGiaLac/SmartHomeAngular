@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailInfoComponent } from '../../detail-info/detail-info.component';
-import { ChartsComponent } from '../../charts/charts.component';
 import { Module } from '../../../models/Module';
 
 @Component({
@@ -11,7 +10,8 @@ import { Module } from '../../../models/Module';
 export class ModuleViewComponent implements OnInit {
   @Input()
   public room: Module;
-
+  //Get time 
+  public time = new Date();
   constructor(public dialog: MatDialog) {
   }
 
@@ -20,15 +20,11 @@ export class ModuleViewComponent implements OnInit {
 
   openDialog(): void {
 
-    // const dialogRef = this.dialog.open(DetailInfoComponent, {
-    //   data: { room: this.room },
-    // });
-    const dialogRef_chart = this.dialog.open(ChartsComponent, {
+    const dialogRef = this.dialog.open(DetailInfoComponent, {
       data: { room: this.room },
     });
-    // dialogRef.afterClosed().subscribe(result => {
-    // });
-    dialogRef_chart.afterClosed().subscribe(result => {
+
+    dialogRef.afterClosed().subscribe(result => {
     });
   }
 

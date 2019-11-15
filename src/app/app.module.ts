@@ -16,7 +16,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
-import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { MatInputModule } from '@angular/material/input';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -26,18 +25,18 @@ import { environment } from 'src/environments/environment';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ConnectDialogComponent } from './connect-dialog/connect-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { AngularFireAuthModule } from "@angular/fire/auth";
 @NgModule({
   declarations: [
     AppComponent,
     ChartsComponent,
     DetailInfoComponent,
     DialogMonitorButtonComponent,
-    LoginComponent,
     MainComponent,
     ModuleViewComponent,
     InfoDisplayComponent,
     InfoButtonComponent,
-    ConnectDialogComponent
+    ConnectDialogComponent,
   ],
   entryComponents: [
     DetailInfoComponent, ConnectDialogComponent],
@@ -60,7 +59,8 @@ import { FormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

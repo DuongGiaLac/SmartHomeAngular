@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { RealtimeDBService } from '../../services/firebase/realtime-db.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
@@ -12,12 +12,9 @@ import { Label } from 'ng2-charts';
 })
 export class ChartsComponent implements OnInit {
 
-  room: Module;
-  constructor(public dialogRef_chart: MatDialogRef<ChartsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private firebase: AngularFireDatabase, public firebase_service: RealtimeDBService) {
-    this.room = new Module(data.room.MAC, data.room.name, firebase);
-    console.log(this.room);
-  }
+  @Input() room: Module;
+
+  constructor() { }
 
   public temp_chart = {
     id: 'temperature',
